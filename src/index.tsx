@@ -6,12 +6,12 @@ import { ThemeProvider } from "@mui/material/styles";
 import { BrowserRouter } from "react-router-dom";
 import { QueryClient, QueryClientProvider } from "react-query";
 import { ReactQueryDevtools } from "react-query/devtools";
-import { theme } from "~/theme";
+import theme from "~/theme";
 
 const queryClient = new QueryClient({
   defaultOptions: {
-    queries: { refetchOnWindowFocus: false, retry: false, staleTime: Infinity },
-  },
+    queries: { refetchOnWindowFocus: false, retry: false, staleTime: Infinity }
+  }
 });
 
 if (import.meta.env.DEV) {

@@ -7,10 +7,16 @@ import Box from "@mui/material/Box";
 
 function Copyright() {
   return (
-    <Typography variant="body2" color="textSecondary" align="center">
+    <Typography
+      variant="body2"
+      color="textSecondary"
+      align="center">
       {"Copyright © "}
-      <Link color="inherit" href="https://material-ui.com/" underline="hover">
-        My Store
+      <Link
+        color="inherit"
+        href="https://material-ui.com/"
+        underline="hover">
+        Elian Store
       </Link>{" "}
       {new Date().getFullYear()}
       {"."}
@@ -23,21 +29,24 @@ const MainLayout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
     <>
       <Header />
       <main>
-        <Container sx={{ pb: 8 }} maxWidth="md">
+        <Container
+          sx={{ pb: 8 }}
+          maxWidth="md">
           {children}
         </Container>
       </main>
       <Box
         component={"footer"}
-        sx={{ bgcolor: (theme) => theme.palette.background.paper, padding: 6 }}
-      >
+        sx={{
+          bgcolor: theme => theme.palette.background.paper,
+          padding: 6
+        }}>
         <Typography
           variant="subtitle1"
           align="center"
           color="textSecondary"
-          component="p"
-        >
-          Thank you for your purchase!
+          component="p">
+          Welcome to our store!
         </Typography>
         <Copyright />
       </Box>
