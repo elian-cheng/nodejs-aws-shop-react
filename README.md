@@ -1,6 +1,15 @@
 # React-shop-cloudfront
 
-This is frontend starter project for nodejs-aws mentoring program. It uses the following technologies:
+This is frontend starter project for nodejs-aws mentoring program.
+
+## Deploy links
+
+- S3 bucket URL (public accessible) (task 2.1 ): https://my-aws-shop-react.s3.eu-north-1.amazonaws.com/index.html
+- CloudFront URL (task 2.1 ): https://d26zbtlbfg6ukq.cloudfront.net
+- S3 bucket URL, returns 403 Access Denied error, available only via CloudFront (task 2.2): https://elian-rss-shop.s3.eu-north-1.amazonaws.com/index.html
+- CloudFront URL (task 2.2 ): https://d3n920ewnj0zbq.cloudfront.net
+
+## Technologies:
 
 - [Vite](https://vitejs.dev/) as a project bundler
 - [React](https://beta.reactjs.org/) as a frontend framework
@@ -36,3 +45,19 @@ Runs tests in console, in browser or with coverage.
 ### `lint`, `prettier`
 
 Runs linting and formatting for all files in `src` folder.
+
+### `cdk`
+
+Interact with the AWS Cloud Development Kit (CDK).
+
+### `cdk:bs`
+
+Bootstrap your AWS environment for CDK.
+
+### `cdk:deploy`
+
+Deploy this stack to your default AWS account/region
+
+### `cdk:destroy`
+
+Remove CDK stacks and associated resources.
