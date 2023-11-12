@@ -26,14 +26,15 @@ export default function Header() {
   return (
     <AppBar position="relative">
       <Toolbar>
-        <Typography variant="h6" sx={{ flexGrow: 1 }}>
+        <Typography
+          variant="h6"
+          sx={{ flexGrow: 1 }}>
           <Link
             component={RouterLink}
             sx={{ color: "inherit" }}
             underline="none"
-            to="/"
-          >
-            My Store!
+            to="/">
+            Elian Store
           </Link>
         </Typography>
 
@@ -45,8 +46,7 @@ export default function Header() {
               aria-haspopup="true"
               onClick={handleMenu}
               color="inherit"
-              size="large"
-            >
+              size="large">
               <AccountCircle />
             </IconButton>
             <Menu
@@ -54,28 +54,25 @@ export default function Header() {
               anchorEl={anchorEl}
               anchorOrigin={{
                 vertical: "top",
-                horizontal: "right",
+                horizontal: "right"
               }}
               keepMounted
               transformOrigin={{
                 vertical: "top",
-                horizontal: "right",
+                horizontal: "right"
               }}
               open={open}
-              onClose={handleClose}
-            >
+              onClose={handleClose}>
               <MenuItem
                 component={RouterLink}
                 to="/admin/orders"
-                onClick={handleClose}
-              >
+                onClick={handleClose}>
                 Manage orders
               </MenuItem>
               <MenuItem
                 component={RouterLink}
                 to="/admin/products"
-                onClick={handleClose}
-              >
+                onClick={handleClose}>
                 Manage products
               </MenuItem>
             </Menu>
