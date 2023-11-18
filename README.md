@@ -2,12 +2,14 @@
 
 This is frontend starter project for nodejs-aws mentoring program.
 
-## Deploy links
+## Deploy link
 
-- S3 bucket URL (public accessible) (task 2.1 ): https://my-aws-shop-react.s3.eu-north-1.amazonaws.com/index.html
-- CloudFront URL (task 2.1 ): https://d26zbtlbfg6ukq.cloudfront.net
-- S3 bucket URL, returns 403 Access Denied error, available only via CloudFront (task 2.2): https://elian-rss-shop.s3.eu-north-1.amazonaws.com/index.html
-- CloudFront URL (task 2.2 ): https://d3n920ewnj0zbq.cloudfront.net
+- CloudFront URL: https://d3q2omdipsntp6.cloudfront.net
+
+## Back-end:
+
+- Repo URL: https://github.com/elian-cheng/nodejs-aws-shop-react-be
+- Product Service URL: https://d0jroimskb.execute-api.eu-north-1.amazonaws.com/products
 
 ## Technologies:
 
