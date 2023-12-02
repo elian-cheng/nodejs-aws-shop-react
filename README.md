@@ -10,6 +10,7 @@ This is frontend starter project for nodejs-aws mentoring program.
 
 - Repo URL: https://github.com/elian-cheng/nodejs-aws-shop-react-be
 - Product Service URL: https://d0jroimskb.execute-api.eu-north-1.amazonaws.com/products
+- Import Service URL: https://m6el93alk8.execute-api.eu-north-1.amazonaws.com/import
 
 ## Technologies:
 
