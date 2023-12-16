@@ -2,7 +2,7 @@ import CssBaseline from "@mui/material/CssBaseline";
 import { ThemeProvider } from "@mui/material/styles";
 import { render, RenderOptions } from "@testing-library/react";
 import { QueryClient, QueryClientProvider } from "react-query";
-import { theme } from "~/theme";
+import theme from "~/theme";
 
 function Providers({ children }: { children: React.ReactElement }) {
   const queryClient = new QueryClient({
@@ -10,9 +10,9 @@ function Providers({ children }: { children: React.ReactElement }) {
       queries: {
         refetchOnWindowFocus: false,
         retry: false,
-        staleTime: Infinity,
-      },
-    },
+        staleTime: Infinity
+      }
+    }
   });
   return (
     <QueryClientProvider client={queryClient}>
@@ -24,9 +24,6 @@ function Providers({ children }: { children: React.ReactElement }) {
   );
 }
 
-export function renderWithProviders(
-  ui: React.ReactElement,
-  options?: RenderOptions
-) {
+export function renderWithProviders(ui: React.ReactElement, options?: RenderOptions) {
   return render(ui, { wrapper: Providers, ...options });
 }
