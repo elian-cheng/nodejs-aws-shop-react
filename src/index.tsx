@@ -15,7 +15,7 @@ axios.interceptors.response.use(
   },
   error => {
     if (error.response.status === 401 || error.response.status === 403) {
-      alert(`Authorization error: ${error.response.status} - ${error.response.statusText}`);
+      alert(`Authorization error:\n\n ${error.response.status} - ${error.response.data?.message}`);
     }
     return Promise.reject(error);
   }
@@ -33,7 +33,7 @@ if (import.meta.env.DEV) {
 }
 
 if (!localStorage.getItem("authorization_token")) {
-  localStorage.setItem("authorization_token", "");
+  localStorage.setItem("authorization_token", "elian_cheng:TEST_PASSWORD");
 }
 
 const container = document.getElementById("app");
