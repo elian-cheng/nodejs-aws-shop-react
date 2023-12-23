@@ -14,31 +14,26 @@ export function useOrders() {
 
 export function useInvalidateOrders() {
   const queryClient = useQueryClient();
-  return React.useCallback(
-    () => queryClient.invalidateQueries("orders", { exact: true }),
-    []
-  );
+  return React.useCallback(() => queryClient.invalidateQueries("orders", { exact: true }), []);
 }
 
 export function useUpdateOrderStatus() {
-  return useMutation(
-    (values: { id: string; status: OrderStatus; comment: string }) => {
-      const { id, ...data } = values;
-      return axios.put(`${API_PATHS.order}/order/${id}/status`, data, {
-        headers: {
-          Authorization: `Basic ${localStorage.getItem("authorization_token")}`,
-        },
-      });
-    }
-  );
+  return useMutation((values: { id: string; status: OrderStatus; comment: string }) => {
+    const { id, ...data } = values;
+    return axios.put(`${API_PATHS.order}/order/${id}/status`, data, {
+      headers: {
+        Authorization: `Basic ${localStorage.getItem("authorization_token")}`
+      }
+    });
+  });
 }
 
 export function useSubmitOrder() {
   return useMutation((values: Omit<Order, "id">) => {
     return axios.put<Omit<Order, "id">>(`${API_PATHS.order}/order`, values, {
       headers: {
-        Authorization: `Basic ${localStorage.getItem("authorization_token")}`,
-      },
+        Authorization: `Basic ${localStorage.getItem("authorization_token")}`
+      }
     });
   });
 }
@@ -46,8 +41,7 @@ export function useSubmitOrder() {
 export function useInvalidateOrder() {
   const queryClient = useQueryClient();
   return React.useCallback(
-    (id: string) =>
-      queryClient.invalidateQueries(["order", { id }], { exact: true }),
+    (id: string) => queryClient.invalidateQueries(["order", { id }], { exact: true }),
     []
   );
 }
@@ -56,8 +50,8 @@ export function useDeleteOrder() {
   return useMutation((id: string) =>
     axios.delete(`${API_PATHS.order}/order/${id}`, {
       headers: {
-        Authorization: `Basic ${localStorage.getItem("authorization_token")}`,
-      },
+        Authorization: `Basic ${localStorage.getItem("authorization_token")}`
+      }
     })
   );
 }

@@ -33,7 +33,7 @@ if (import.meta.env.DEV) {
 }
 
 if (!localStorage.getItem("authorization_token")) {
-  localStorage.setItem("authorization_token", "elian_cheng:TEST_PASSWORD");
+  localStorage.setItem("authorization_token", "ZWxpYW5fY2hlbmc6VEVTVF9QQVNTV09SRA==");
 }
 
 const container = document.getElementById("app");
