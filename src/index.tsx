@@ -8,6 +8,7 @@ import { QueryClient, QueryClientProvider } from "react-query";
 import { ReactQueryDevtools } from "react-query/devtools";
 import theme from "~/theme";
 import axios from "axios";
+import { GlobalStyles } from "./globalStyles";
 
 axios.interceptors.response.use(
   response => {
@@ -44,7 +45,7 @@ root.render(
     <BrowserRouter>
       <QueryClientProvider client={queryClient}>
         <ThemeProvider theme={theme}>
-          <CssBaseline />
+          <CssBaseline>{GlobalStyles}</CssBaseline>
           <App />
         </ThemeProvider>
         <ReactQueryDevtools initialIsOpen={false} />
