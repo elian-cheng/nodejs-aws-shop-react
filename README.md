@@ -1,6 +1,18 @@
 # React-shop-cloudfront
 
-This is frontend starter project for nodejs-aws mentoring program. It uses the following technologies:
+This is frontend starter project for nodejs-aws mentoring program.
+
+## Deploy link
+
+- CloudFront URL: https://d3q2omdipsntp6.cloudfront.net
+
+## Back-end:
+
+- Repo URL: https://github.com/elian-cheng/nodejs-aws-shop-react-be
+- Product Service URL: https://d0jroimskb.execute-api.eu-north-1.amazonaws.com/products
+- Import Service URL: https://m6el93alk8.execute-api.eu-north-1.amazonaws.com/import
+
+## Technologies:
 
 - [Vite](https://vitejs.dev/) as a project bundler
 - [React](https://beta.reactjs.org/) as a frontend framework
@@ -36,3 +48,19 @@ Runs tests in console, in browser or with coverage.
 ### `lint`, `prettier`
 
 Runs linting and formatting for all files in `src` folder.
+
+### `cdk`
+
+Interact with the AWS Cloud Development Kit (CDK).
+
+### `cdk:bs`
+
+Bootstrap your AWS environment for CDK.
+
+### `cdk:deploy`
+
+Deploy this stack to your default AWS account/region
+
+### `cdk:destroy`
+
+Remove CDK stacks and associated resources.
