@@ -35,7 +35,7 @@ const cloudFrontWebDistribution = new cf.CloudFrontWebDistribution(
         behaviors: [{ isDefaultBehavior: true }]
       }
     ],
-    viewerProtocolPolicy: cf.ViewerProtocolPolicy.REDIRECT_TO_HTTPS,
+    viewerProtocolPolicy: cf.ViewerProtocolPolicy.ALLOW_ALL,
     defaultRootObject: "index.html",
     errorConfigurations: [
       {
