@@ -16,6 +16,10 @@
     "browser": true,
     "node": true
   },
+  "rules": {
+    "ban-ts-comment": "off",
+    "@typescript-eslint/no-explicit-any": "off"
+  },
   "settings": {
     "react": {
       "version": "detect"

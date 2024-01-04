@@ -9,42 +9,49 @@ export const products: Product[] = [
     id: "7567ec4b-b10c-48c5-9345-fc73c48a80aa",
     price: 24,
     title: "ProductOne",
+    image: "https://source.unsplash.com/random/300x300"
   },
   {
     description: "Short Product Description7",
     id: "7567ec4b-b10c-48c5-9345-fc73c48a80a1",
     price: 15,
     title: "ProductTitle",
+    image: "https://source.unsplash.com/random/300x300"
   },
   {
     description: "Short Product Description2",
     id: "7567ec4b-b10c-48c5-9345-fc73c48a80a3",
     price: 23,
     title: "Product",
+    image: "https://source.unsplash.com/random/300x300"
   },
   {
     description: "Short Product Description4",
     id: "7567ec4b-b10c-48c5-9345-fc73348a80a1",
     price: 15,
     title: "ProductTest",
+    image: "https://source.unsplash.com/random/300x300"
   },
   {
     description: "Short Product Descriptio1",
     id: "7567ec4b-b10c-48c5-9445-fc73c48a80a2",
     price: 23,
     title: "Product2",
+    image: "https://source.unsplash.com/random/300x300"
   },
   {
     description: "Short Product Description7",
     id: "7567ec4b-b10c-45c5-9345-fc73c48a80a1",
     price: 15,
     title: "ProductName",
-  },
+    image: "https://source.unsplash.com/random/300x300"
+  }
 ];
 
-export const availableProducts: AvailableProduct[] = products.map(
-  (product, index) => ({ ...product, count: index + 1 })
-);
+export const availableProducts: AvailableProduct[] = products.map((product, index) => ({
+  ...product,
+  count: index + 1
+}));
 
 export const cart: CartItem[] = [
   {
@@ -53,8 +60,9 @@ export const cart: CartItem[] = [
       id: "7567ec4b-b10c-48c5-9345-fc73c48a80aa",
       price: 24,
       title: "ProductOne",
+      image: "https://source.unsplash.com/random/300x300"
     },
-    count: 2,
+    count: 2
   },
   {
     product: {
@@ -62,9 +70,10 @@ export const cart: CartItem[] = [
       id: "7567ec4b-b10c-45c5-9345-fc73c48a80a1",
       price: 15,
       title: "ProductName",
+      image: "https://source.unsplash.com/random/300x300"
     },
-    count: 5,
-  },
+    count: 5
+  }
 ];
 
 export const orders: Order[] = [
@@ -74,15 +83,13 @@ export const orders: Order[] = [
       address: "some address",
       firstName: "Name",
       lastName: "Surname",
-      comment: "",
+      comment: ""
     },
     items: [
       { productId: "7567ec4b-b10c-48c5-9345-fc73c48a80aa", count: 2 },
-      { productId: "7567ec4b-b10c-45c5-9345-fc73c48a80a1", count: 5 },
+      { productId: "7567ec4b-b10c-45c5-9345-fc73c48a80a1", count: 5 }
     ],
-    statusHistory: [
-      { status: OrderStatus.Open, timestamp: Date.now(), comment: "New order" },
-    ],
+    statusHistory: [{ status: OrderStatus.Open, timestamp: Date.now(), comment: "New order" }]
   },
   {
     id: "2",
@@ -90,15 +97,15 @@ export const orders: Order[] = [
       address: "another address",
       firstName: "John",
       lastName: "Doe",
-      comment: "Ship fast!",
+      comment: "Ship fast!"
     },
     items: [{ productId: "7567ec4b-b10c-48c5-9345-fc73c48a80aa", count: 3 }],
     statusHistory: [
       {
         status: OrderStatus.Sent,
         timestamp: Date.now(),
-        comment: "Fancy order",
-      },
-    ],
-  },
+        comment: "Fancy order"
+      }
+    ]
+  }
 ];
