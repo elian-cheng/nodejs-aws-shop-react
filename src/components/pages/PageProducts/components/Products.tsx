@@ -48,20 +48,23 @@ export default function Products() {
           md={4}>
           <Card sx={{ height: "100%", display: "flex", flexDirection: "column" }}>
             <CardMedia
-              sx={{ pt: "56.25%" }}
-              image={`https://source.unsplash.com/random?sig=${index}`}
+              sx={{ pt: "56.25%", objectFit: "contain", backgroundSize: "contain", m: 2 }}
+              image={
+                product.image ? product.image : `https://source.unsplash.com/random?sig=${index}`
+              }
               title="Image title"
             />
             <CardContent sx={{ flexGrow: 1 }}>
               <Typography
                 gutterBottom
                 variant="h5"
-                component="h2">
+                component="h2"
+                align="center">
                 {product.title}
               </Typography>
-              <Typography>{formatAsPrice(product.price)}</Typography>
+              <Typography align="center">{formatAsPrice(product.price)}</Typography>
             </CardContent>
-            <CardActions>
+            <CardActions sx={{ alignSelf: "center" }}>
               <AddProductToCart product={product} />
             </CardActions>
           </Card>
