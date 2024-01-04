@@ -5,6 +5,12 @@ import ListItemText from "@mui/material/ListItemText";
 import { CartItem } from "~/models/CartItem";
 import { formatAsPrice } from "~/utils/utils";
 import AddProductToCart from "~/components/AddProductToCart/AddProductToCart";
+import { useAvailableProducts } from "~/queries/products";
+import { useEffect, useState } from "react";
+import { AvailableProduct } from "~/models/Product";
+import axios from "axios";
+import API_PATHS from "~/constants/apiPaths";
+import get from "lodash/get";
 
 type CartItemsProps = {
   items: CartItem[];
@@ -12,19 +18,47 @@ type CartItemsProps = {
 };
 
 export default function CartItems({ items, isEditable }: CartItemsProps) {
-  const totalPrice: number = items.reduce(
-    (total, item) => item.count * item.product.price + total,
-    0
-  );
+  const [products, setProducts] = useState<AvailableProduct[]>([]);
+
+  useEffect(() => {
+    (async function getProducts() {
+      try {
+        const response = await axios.get(`${API_PATHS.product}`, {});
+        const products = get(response, "data", []);
+        setProducts(products);
+      } catch (e) {
+        console.log(e);
+      }
+    })();
+  }, []);
+
+  const { isLoading } = useAvailableProducts();
+  const totalPrice: number = items.reduce((total, item) => {
+    if (!item.price) return total;
+    return total + item.price * item.count;
+  }, 0);
+  const orderIdArr = items.map(item => item.product_id);
+
+  // @ts-ignore
+  const itemWithData: CartItem[] = products
+    .filter(el => orderIdArr.includes(el.id))
+    .map(el => ({
+      product: el,
+      // @ts-ignore
+      count: (items as CartItem[])?.find(item => (item?.product_id as string) === el.id).count
+    }));
+
+  if (isLoading) {
+    return <Typography>Loading...</Typography>;
+  }
 
   return (
     <>
       <List disablePadding>
-        {items.map((cartItem: CartItem) => (
+        {itemWithData.map((cartItem: CartItem) => (
           <ListItem
-            sx={{ padding: (theme) => theme.spacing(1, 0) }}
-            key={cartItem.product.id}
-          >
+            sx={{ padding: theme => theme.spacing(1, 0) }}
+            key={cartItem.product.id}>
             {isEditable && <AddProductToCart product={cartItem.product} />}
             <ListItemText
               primary={cartItem.product.title}
@@ -36,13 +70,15 @@ export default function CartItems({ items, isEditable }: CartItemsProps) {
             </Typography>
           </ListItem>
         ))}
-        <ListItem sx={{ padding: (theme) => theme.spacing(1, 0) }}>
+        <ListItem sx={{ padding: theme => theme.spacing(1, 0) }}>
           <ListItemText primary="Shipping" />
           <Typography variant="body2">Free</Typography>
         </ListItem>
-        <ListItem sx={{ padding: (theme) => theme.spacing(1, 0) }}>
+        <ListItem sx={{ padding: theme => theme.spacing(1, 0) }}>
           <ListItemText primary="Total" />
-          <Typography variant="subtitle1" sx={{ fontWeight: "bold" }}>
+          <Typography
+            variant="subtitle1"
+            sx={{ fontWeight: "bold" }}>
             {formatAsPrice(totalPrice)}
           </Typography>
         </ListItem>

@@ -5,40 +5,42 @@ import API_PATHS from "~/constants/apiPaths";
 import { OrderStatus } from "~/constants/order";
 import { Order } from "~/models/Order";
 
+interface ResponseOrder<T> {
+  statusCode: number;
+  message: string;
+  data: T;
+}
 export function useOrders() {
-  return useQuery<Order[], AxiosError>("orders", async () => {
-    const res = await axios.get<Order[]>(`${API_PATHS.order}/order`);
-    return res.data;
+  // @ts-ignore
+  return useQuery<ResponseOrder<any[]>, AxiosError>("orders", async () => {
+    const res = await axios.get<ResponseOrder<any[]>>(`${API_PATHS.order}/order`);
+    // @ts-ignore
+    return res.data.data;
   });
 }
 
 export function useInvalidateOrders() {
   const queryClient = useQueryClient();
-  return React.useCallback(
-    () => queryClient.invalidateQueries("orders", { exact: true }),
-    []
-  );
+  return React.useCallback(() => queryClient.invalidateQueries("orders", { exact: true }), []);
 }
 
 export function useUpdateOrderStatus() {
-  return useMutation(
-    (values: { id: string; status: OrderStatus; comment: string }) => {
-      const { id, ...data } = values;
-      return axios.put(`${API_PATHS.order}/order/${id}/status`, data, {
-        headers: {
-          Authorization: `Basic ${localStorage.getItem("authorization_token")}`,
-        },
-      });
-    }
-  );
+  return useMutation((values: { id: string; status: OrderStatus; comment: string }) => {
+    const { id, ...data } = values;
+    return axios.put(`${API_PATHS.order}/order/${id}/status`, data, {
+      headers: {
+        Authorization: `Basic ${localStorage.getItem("authorization_token")}`
+      }
+    });
+  });
 }
 
 export function useSubmitOrder() {
   return useMutation((values: Omit<Order, "id">) => {
     return axios.put<Omit<Order, "id">>(`${API_PATHS.order}/order`, values, {
       headers: {
-        Authorization: `Basic ${localStorage.getItem("authorization_token")}`,
-      },
+        Authorization: `Basic ${localStorage.getItem("authorization_token")}`
+      }
     });
   });
 }
@@ -46,8 +48,7 @@ export function useSubmitOrder() {
 export function useInvalidateOrder() {
   const queryClient = useQueryClient();
   return React.useCallback(
-    (id: string) =>
-      queryClient.invalidateQueries(["order", { id }], { exact: true }),
+    (id: string) => queryClient.invalidateQueries(["order", { id }], { exact: true }),
     []
   );
 }
@@ -56,8 +57,8 @@ export function useDeleteOrder() {
   return useMutation((id: string) =>
     axios.delete(`${API_PATHS.order}/order/${id}`, {
       headers: {
-        Authorization: `Basic ${localStorage.getItem("authorization_token")}`,
-      },
+        Authorization: `Basic ${localStorage.getItem("authorization_token")}`
+      }
     })
   );
 }
